@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/static/Manrope-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+--color-green-primary-300: hsl(150, 100%, 66%);
+--color-blue-primary-200: hsl(193, 38%, 86%);
+--color-blue-neutral-600: hsl(217, 19%, 38%);
+--color-blue-neutral-900: hsl(217, 19%, 24%);
+--color-blue-neutral-950: hsl(218, 23%, 16%);
+
+--text-lg: 1.25rem;
+--text-xs: 0.60rem;
+
+--font-manrope: Manrope, sans-serif;
+}
+
+@layer base {
+/* box-border jau ir Tailwind resetā */
+  body {
+    @apply bg-blue-neutral-950 text-blue-primary-200 font-manrope flex justify-center items-center h-screen m-auto;
+  }
+}
