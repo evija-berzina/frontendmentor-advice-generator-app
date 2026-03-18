@@ -2,7 +2,7 @@ import {AdviceButton} from '../components/AdviceButton';
 import DividerMobile from '../assets/images/pattern-divider-mobile.svg';
 import DividerDesktop from '../assets/images/pattern-divider-desktop.svg';
 
-export function AdviceCard({data, dataFetch}) {
+export function AdviceCard({data, dataFetch, isLoading}) {
   
   return (
     <section className='flex flex-col justify-content items-center gap-4 text-center bg-blue-neutral-900 text-lg w-2xs px-4 py-8 rounded-lg relative'>
@@ -14,6 +14,7 @@ export function AdviceCard({data, dataFetch}) {
       </picture>
       <AdviceButton
         dataFetch={dataFetch}
+        isLoading={isLoading}
       />
     </section>
   )
