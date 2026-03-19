@@ -2,7 +2,10 @@ import {useState, useEffect} from 'react';
 import {AdviceCard} from '../components/AdviceCard';
 
 export function Home() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState({
+    id: '',
+    advice: ''
+  });
   const [isLoading, setIsLoading] = useState(false);
  
   function dataFetch() {
@@ -12,8 +15,7 @@ export function Home() {
       return response.json()
     }).then((data) => {
         setIsLoading(false);
-        setData(data.slip.advice);
-        console.log(data);
+        setData({id: data.slip.id, advice: data.slip.advice});
       })
   }
 
