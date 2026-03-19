@@ -5,7 +5,7 @@ import DividerDesktop from '../assets/images/pattern-divider-desktop.svg';
 export function AdviceCard({data, dataFetch, isLoading, isInitial}) {
   
   return (
-    <section className='flex flex-col justify-content items-center gap-4 text-center bg-blue-neutral-900 text-lg w-2xs px-4 py-8 rounded-lg relative md:w-md md:text-xl md:gap-8 md:px-8'>
+    <article className='flex flex-col justify-content items-center gap-4 text-center bg-blue-neutral-900 text-lg w-2xs px-4 py-8 rounded-lg relative md:w-md md:text-xl md:gap-8 md:px-8'>
       {isInitial
         ? <h1 className='text-green-primary-300 uppercase text-xs tracking-[0.3em]'>{data.advice}</h1>
         : (
@@ -23,6 +23,6 @@ export function AdviceCard({data, dataFetch, isLoading, isInitial}) {
         dataFetch={dataFetch}
         isLoading={isLoading}
       />
-    </section>
+    </article>
   )
 }
