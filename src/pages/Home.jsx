@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {AdviceCard} from '../components/AdviceCard';
+import {ErrorMessage} from '../components/ErrorMessage';
 
 export function Home() {
   const [data, setData] = useState({
@@ -8,17 +9,22 @@ export function Home() {
   });
   const [isInitial, setIsInitial] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
  
-  function dataFetch() {
+  async function dataFetch() {
     setIsLoading(true);
-    fetch('https://api.adviceslip.com/advice')
-    .then((response) => {
-      return response.json()
-    }).then((data) => {
-        setData({id: data.slip.id, advice: data.slip.advice});
-        setIsLoading(false);
-        setIsInitial(false);
-      })
+    setError(null);
+
+    try {
+      const response = await fetch('https://api.adviceslip.com/advice');
+      const data = await response.json();
+      setData({id: data.slip.id, advice: data.slip.advice});
+      setIsInitial(false);
+    } catch {
+      setError('Failed to fetch advice. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -27,12 +33,15 @@ export function Home() {
 
   return (
     <main>
-      <AdviceCard
-        data={data}
-        dataFetch={dataFetch}
-        isInitial={isInitial}
-        isLoading={isLoading}
-      />
+      {error
+        ? <ErrorMessage error={error} />
+        : <AdviceCard
+            data={data}
+            dataFetch={dataFetch}
+            isInitial={isInitial}
+            isLoading={isLoading}
+          />
+      }
     </main>
- )
+  )
 }
