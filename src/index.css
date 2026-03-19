@@ -15,6 +15,8 @@
 --color-blue-neutral-900: hsl(217, 19%, 24%);
 --color-blue-neutral-950: hsl(218, 23%, 16%);
 
+--shadow-custom: 0 0px 14px 12px rgba(82, 255, 168, 0.25);
+
 --text-lg: 1.25rem;
 --text-xs: 0.60rem;
 
