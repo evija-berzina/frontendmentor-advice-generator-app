@@ -4,8 +4,9 @@ import {AdviceCard} from '../components/AdviceCard';
 export function Home() {
   const [data, setData] = useState({
     id: '',
-    advice: ''
+    advice: 'Loading advice...'
   });
+  const [isInitial, setIsInitial] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
  
   function dataFetch() {
@@ -14,8 +15,9 @@ export function Home() {
     .then((response) => {
       return response.json()
     }).then((data) => {
-        setIsLoading(false);
         setData({id: data.slip.id, advice: data.slip.advice});
+        setIsLoading(false);
+        setIsInitial(false);
       })
   }
 
@@ -28,6 +30,7 @@ export function Home() {
       <AdviceCard
         data={data}
         dataFetch={dataFetch}
+        isInitial={isInitial}
         isLoading={isLoading}
       />
     </main>
