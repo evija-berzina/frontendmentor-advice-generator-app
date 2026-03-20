@@ -17,6 +17,7 @@ export function Home() {
 
     try {
       const response = await fetch(`https://api.adviceslip.com/advice?timestamp=${Date.now()}`);
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
       const responseData = await response.json();
       setData({id: responseData.slip.id, advice: responseData.slip.advice});
       setIsInitial(false);
