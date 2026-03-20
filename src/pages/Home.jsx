@@ -17,17 +17,20 @@ export function Home() {
 
     try {
       const response = await fetch(`https://api.adviceslip.com/advice?timestamp=${Date.now()}`);
-      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+
+      if (!response.ok) {
+        const message = `Failed to fetch advice, response status ${response.status}. Please try again.`;
+        throw new Error(message);
+      }
+
       const responseData = await response.json();
       setData({id: responseData.slip.id, advice: responseData.slip.advice});
       setIsInitial(false);
-    } catch {
-      setError('Failed to fetch advice. Please try again.');
+    } catch(error) {
+      setError(error.message || 'Something went wrong');
+      //ja nebus internets vai tikla kluda, tad zinos 'Failed to fetch'
     } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-      
+      setIsLoading(false);
     }
   }
 
