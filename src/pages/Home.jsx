@@ -16,14 +16,17 @@ export function Home() {
     setError(null);
 
     try {
-      const response = await fetch('https://api.adviceslip.com/advice');
+      const response = await fetch(`https://api.adviceslip.com/advice?timestamp=${Date.now()}`);
       const data = await response.json();
       setData({id: data.slip.id, advice: data.slip.advice});
       setIsInitial(false);
     } catch {
       setError('Failed to fetch advice. Please try again.');
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+      
     }
   }
 
