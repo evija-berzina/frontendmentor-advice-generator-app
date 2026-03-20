@@ -20,13 +20,16 @@
 --text-xl: 1.75rem;
 --text-lg: 1.25rem;
 --text-xs: 0.60rem;
+}
 
---font-manrope: Manrope, sans-serif;
+:root {
+  --font-manrope: Manrope, sans-serif;
 }
 
 @layer base {
 /* box-border jau ir Tailwind resetā */
   body {
-    @apply bg-blue-neutral-950 text-blue-primary-200 font-manrope flex justify-center items-center h-screen m-auto;
+    @apply bg-blue-neutral-950 text-blue-primary-200 flex justify-center items-center h-screen m-auto;
+    font-family: var(--font-manrope);
   }
 }

@@ -17,7 +17,7 @@ export function AdviceCard({data, dataFetch, isLoading, isInitial}) {
       }
       <picture>
         <source media="(min-width: 768px)" srcSet={DividerDesktop} />
-        <img className='pb-5' src={DividerMobile} alt="divider pattern" />
+        <img className='pb-5' src={DividerMobile} alt="" />
       </picture>
       <AdviceButton
         dataFetch={dataFetch}
